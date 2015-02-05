@@ -1,0 +1,46 @@
+plugins { id 'net.saliman.cobertura' version '2.2.5' }
+
+repositories { jcenter() }
+
+subprojects {
+	apply plugin: 'groovy'
+	apply plugin: 'eclipse'
+	apply plugin: 'application'
+
+	def jdkVersion = 1.7
+	sourceCompatibility = jdkVersion
+	targetCompatibility = jdkVersion
+
+	repositories {
+		mavenCentral()
+		maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+	}
+
+	dependencies {
+		compile 'org.codehaus.groovy:groovy-all:2.4.0'
+		testCompile "org.spockframework:spock-core:1.0-groovy-2.3-SNAPSHOT"
+	}
+
+	eclipse {
+		pathVariables 'GRADLE_USER_HOME': gradle.gradleUserHomeDir
+		classpath.file {
+			whenMerged { classpath ->
+				classpath.entries.findAll { entry -> entry.kind == 'output' }*.path = 'build/bin'
+			}
+		}
+	}
+}
+
+project(':app') {
+	apply plugin: 'net.saliman.cobertura'
+
+	mainClassName = 'com.github.ksoichiro.groovy.example.Example'
+	eclipse.project.name = 'groovy-example-app'
+	cobertura {
+		coverageFormats = ['xml', 'html']
+	}
+}
+
+project(':app-sub') {
+	eclipse.project.name = 'groovy-example-app-sub'
+}
