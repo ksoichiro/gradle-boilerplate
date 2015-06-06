@@ -10,7 +10,7 @@ class Example {
 	def execute() {
 		def config = new ConfigSlurper().parse(
 				new File(getClass().classLoader.getResource("config.groovy").toURI()).text)
-		println "Enviromnent: ${config.app.env}"
+		println "Environment: ${config.app.env}"
 	}
 
 	def say() {
