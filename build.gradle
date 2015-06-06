@@ -3,29 +3,29 @@ plugins { id 'net.saliman.cobertura' version '2.2.5' }
 repositories { jcenter() }
 
 subprojects {
-	apply plugin: 'groovy'
-	apply plugin: 'eclipse'
-	apply plugin: 'application'
+    apply plugin: 'groovy'
+    apply plugin: 'eclipse'
+    apply plugin: 'application'
 
-	def jdkVersion = 1.7
-	sourceCompatibility = jdkVersion
-	targetCompatibility = jdkVersion
+    def jdkVersion = 1.7
+    sourceCompatibility = jdkVersion
+    targetCompatibility = jdkVersion
 
-	repositories {
-		mavenCentral()
-	}
+    repositories {
+        mavenCentral()
+    }
 
-	dependencies {
-		compile 'org.codehaus.groovy:groovy-all:2.4.0'
-		testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
-	}
+    dependencies {
+        compile 'org.codehaus.groovy:groovy-all:2.4.0'
+        testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+    }
 
-	eclipse {
-		pathVariables 'GRADLE_USER_HOME': gradle.gradleUserHomeDir
-		classpath.file {
-			whenMerged { classpath ->
-				classpath.entries.findAll { entry -> entry.kind == 'output' }*.path = 'build/bin'
-			}
-		}
-	}
+    eclipse {
+        pathVariables 'GRADLE_USER_HOME': gradle.gradleUserHomeDir
+        classpath.file {
+            whenMerged { classpath ->
+                classpath.entries.findAll { entry -> entry.kind == 'output' }*.path = 'build/bin'
+            }
+        }
+    }
 }
