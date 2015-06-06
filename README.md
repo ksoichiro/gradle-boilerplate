@@ -17,6 +17,22 @@ Examples of Groovy and Gradle codes.
 * Gradle IDE Pack
 * Set `GRADLE_USER_HOME` classpath variable to `/path/to/home/.gradle`
 
+## Test
+
+```
+./gradlew clean test
+```
+
+To see the report, open `app/build/reports/tests/index.html`.
+
+## Cobertura
+
+```
+./gradlew clean cobertura
+```
+
+To see the report, open `app/build/reports/cobertura/index.html`.
+
 ## License
 
 Copyright (c) 2015 Soichiro Kashima  
