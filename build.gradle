@@ -29,17 +29,3 @@ subprojects {
 		}
 	}
 }
-
-project(':app') {
-	apply plugin: 'net.saliman.cobertura'
-
-	mainClassName = 'com.github.ksoichiro.groovy.example.Example'
-	eclipse.project.name = 'groovy-example-app'
-	cobertura {
-		coverageFormats = ['xml', 'html']
-	}
-}
-
-project(':app-sub') {
-	eclipse.project.name = 'groovy-example-app-sub'
-}
