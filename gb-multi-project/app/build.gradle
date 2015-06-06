@@ -1,0 +1,7 @@
+apply plugin: 'net.saliman.cobertura'
+
+eclipse.project.name = 'gb-multi-project-app'
+
+cobertura {
+    coverageFormats = ['xml', 'html']
+}

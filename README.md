@@ -1,17 +1,8 @@
-# Groovy-Example
+# Gradle Boilerplate
 
-Examples of Groovy and Gradle codes.
+Boilerplate codes for Gradle.
 
-## Features
-
-* Develop with Eclipse or IntelliJ IDEA
-* Multiproject structure
-* Configuration for multiple environments
-* Tests with Spock
-* Code coverage with Cobertura
-* Building CoffeeScript, LESS using npm/gulp
-
-## Setup
+## Supported IDEs
 
 ### Eclipse
 
@@ -26,7 +17,13 @@ Examples of Groovy and Gradle codes.
 * JDK 7 or 8
 * IntelliJ IDEA CE 14
 
-## Test
+## gb-multi-project
+
+* Multiple projects
+* Tests with Spock
+* Code coverage with Cobertura
+
+### Test
 
 ```sh
 $ ./gradlew clean test
@@ -34,7 +31,7 @@ $ ./gradlew clean test
 
 To see the report, open `app/build/reports/tests/index.html`.
 
-## Cobertura
+### Cobertura
 
 ```sh
 $ ./gradlew clean cobertura
@@ -42,7 +39,9 @@ $ ./gradlew clean cobertura
 
 To see the report, open `app/build/reports/cobertura/index.html`.
 
-## Multi-environments
+## gb-multi-env
+
+Manages configuration files for multiple environments.
 
 ```sh
 (Create archive for production and execute it)
@@ -60,7 +59,9 @@ Environment: production
 Hello, world
 ```
 
-## npm/gulp
+## gb-front-end
+
+Front end build using npm/gulp.
 
 ### Installing node, npm, bower, gulp, ...
 
