@@ -9,6 +9,7 @@ Examples of Groovy and Gradle codes.
 * Configuration for multiple environments
 * Tests with Spock
 * Code coverage with Cobertura
+* Building CoffeeScript, LESS using npm/gulp
 
 ## Setup
 
@@ -57,6 +58,20 @@ Hello, world
 $ ./gradlew emulateProduction
 Environment: production
 Hello, world
+```
+
+## npm/gulp
+
+### Installing node, npm, bower, gulp, ...
+
+```sh
+$ ./gradlew npmInstall
+```
+
+### Building CSS/JavaScript
+
+```sh
+$ ./gradlew gulpBuild
 ```
 
 ## License
