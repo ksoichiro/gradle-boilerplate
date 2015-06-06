@@ -75,6 +75,16 @@ $ ./gradlew npmInstall
 $ ./gradlew gulpBuild
 ```
 
+## gb-vagrant
+
+Operate Vagrant box.
+
+```sh
+$ ./gradlew vagrantUp
+$ ./gradlew vagrantHalt
+$ ./gradlew vagrantDestroy
+```
+
 ## License
 
 Copyright (c) 2015 Soichiro Kashima  

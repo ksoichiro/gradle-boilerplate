@@ -1,0 +1,25 @@
+def execCommand(String command) {
+    if (System.getProperty('os.name').toLowerCase().contains('windows')) {
+        exec {
+            executable 'cmd'
+            args '/c', command
+        }
+    } else {
+        exec {
+            executable 'sh'
+            args '-c', command
+        }
+    }
+}
+
+task vagrantUp << {
+    execCommand("vagrant up")
+}
+
+task vagrantHalt << {
+    execCommand("vagrant halt")
+}
+
+task vagrantDestroy << {
+    execCommand("vagrant destroy -f")
+}
