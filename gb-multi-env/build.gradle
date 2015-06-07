@@ -64,12 +64,12 @@ Collection<String> environments = [
 ]
 
 environments.each { String env ->
-    task("zip${env.capitalize()}", type: Zip) {
+    task("zip${env.capitalize()}", type: Zip, group: "release") {
         appendix = env
         from "${project.buildDir}/copy/tmp/${env}"
     }
 
-    task("emulate${env.capitalize()}", dependsOn: "pack${env.capitalize()}") << {
+    task("emulate${env.capitalize()}", dependsOn: "pack${env.capitalize()}", group: "release") << {
         copy {
             from zipTree("${buildDir}/distributions/${archivesBaseName}-${env}.zip")
             into "${buildDir}/emulation/${env}"
@@ -82,7 +82,7 @@ environments.each { String env ->
         }
     }
 
-    task("pack${env.capitalize()}", dependsOn: jar) << {
+    task("pack${env.capitalize()}", dependsOn: jar, group: "release") << {
         copyFiles(env)
         tasks."zip${env.capitalize()}".execute()
     }
