@@ -1,7 +1,19 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-#
+
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.provision "shell", path: "provision.sh"
+
+  if Vagrant.has_plugin?("vagrant-proxyconf") then
+    if ENV['http_proxy'] then
+      config.proxy.http = ENV['http_proxy']
+      if ENV['https_proxy'] then
+        config.proxy.https = ENV['https_proxy']
+      else
+        config.proxy.https = config.proxy.http
+      end
+      config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
+    end
+  end
 end
