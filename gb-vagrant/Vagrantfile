@@ -8,6 +8,9 @@ Vagrant.configure("2") do |config|
   if Vagrant.has_plugin?("vagrant-proxyconf") then
     if ENV['http_proxy'] then
       config.proxy.http = ENV['http_proxy']
+      if !config.proxy.http.start_with?('http://')
+        config.proxy.http = "http://#{config.proxy.http}"
+      end
       if ENV['https_proxy'] then
         config.proxy.https = ENV['https_proxy']
       else
